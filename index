@@ -1,0 +1,257 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Baby, 
+  Bed, 
+  PenTool, 
+  ChevronRight, 
+  ShieldCheck, 
+  Trees, 
+  Wrench, 
+  Heart,
+  Menu,
+  X
+} from 'lucide-react';
+
+const App = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Configuration des images
+  const illustrationHero = "7407e3bd-5dc2-4fa8-819b-8857b2227783.jfif"; // On garde l'aquarelle pour le Hero
+
+  useEffect(() => {
+    setMounted(true);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const steps = [
+    {
+      id: 0,
+      title: "La Naissance",
+      subtitle: "Le Berceau (0-6 mois)",
+      description: "Un cocon de douceur et de sécurité pour les premières nuits. Conçu en bois naturel pour un environnement sain, sans aucune émanation de colle ou de métal.",
+      icon: <Baby className="w-6 h-6" />,
+      img: "berceau.jpg",
+      fallback: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: 1,
+      title: "L'Autonomie",
+      subtitle: "Le Lit Bébé (6 mois - 4 ans)",
+      description: "Le meuble s'adapte à sa curiosité. En retirant quelques panneaux (sans outils), il devient un lit ouvert qui favorise l'apprentissage de la liberté et l'autonomie Montessori.",
+      icon: <Bed className="w-6 h-6" />,
+      img: "lit.jpg",
+      fallback: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: 2,
+      title: "La Créativité",
+      subtitle: "La Table d'Étude (5 ans +)",
+      description: "La transformation finale. Le lit devient un bureau robuste et élégant. Il accompagne désormais ses premiers dessins, ses devoirs et ses projets de futur écolier.",
+      icon: <PenTool className="w-6 h-6" />,
+      img: "bureau.jpg",
+      fallback: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&q=80&w=800"
+    }
+  ];
+
+  if (!mounted) return <div className="bg-[#FDFCF9] min-h-screen" />;
+
+  return (
+    <div className="min-h-screen bg-[#FDFCF9] font-sans text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-6'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="text-2xl font-serif font-bold tracking-tight text-amber-900">
+            L'ÉVOLUTIF
+          </div>
+          
+          <div className="hidden md:flex space-x-8 items-center text-sm font-medium">
+            <a href="#evolution" className="hover:text-amber-700 transition-colors">L'Évolution</a>
+            <a href="#concept" className="hover:text-amber-700 transition-colors">Le Concept</a>
+            <button className="bg-amber-900 text-white px-6 py-2 rounded-full hover:bg-amber-800 transition-all shadow-lg active:scale-95">
+              Pré-commander
+            </button>
+          </div>
+
+          <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-b p-6 flex flex-col space-y-4 animate-in slide-in-from-top duration-300">
+            <a href="#evolution" onClick={() => setIsMenuOpen(false)}>L'Évolution</a>
+            <a href="#concept" onClick={() => setIsMenuOpen(false)}>Le Concept</a>
+            <button className="bg-amber-900 text-white py-3 rounded-xl font-bold">Pré-commander</button>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <div className="inline-flex items-center px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-bold uppercase tracking-widest">
+              ✨ Zéro vis • Une vie entière
+            </div>
+            <h1 className="text-5xl md:text-7xl font-serif leading-tight text-slate-900">
+              Un seul meuble.<br />
+              <span className="italic text-amber-800 underline decoration-amber-200 underline-offset-8">Dix ans</span> d'histoires.
+            </h1>
+            <p className="text-xl text-slate-600 max-w-md leading-relaxed">
+              Le berceau qui se transforme en lit, puis en bureau. En bois de bouleau massif, assemblé en quelques minutes sans aucun outil.
+            </p>
+            <div className="flex pt-4">
+              <a href="#evolution" className="bg-amber-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center group hover:shadow-2xl hover:-translate-y-1 transition-all">
+                Découvrir les 3 étapes
+                <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <div className="absolute -inset-4 bg-amber-100/40 rounded-[50px] -rotate-2"></div>
+            <div className="relative aspect-[4/3] rounded-[40px] overflow-hidden shadow-2xl border-[12px] border-white">
+              <img 
+                src={illustrationHero} 
+                alt="Vision artistique du meuble" 
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800"; }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Manual Steps Section */}
+      <section id="evolution" className="py-24 bg-white px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20 space-y-4">
+            <h2 className="text-4xl md:text-6xl font-serif text-slate-900">Racontez son évolution.</h2>
+            <p className="text-xl text-slate-500 italic max-w-2xl mx-auto">
+              Chaque étape a été pensée pour répondre aux besoins changeants de votre enfant.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            {/* Step Selection Tabs */}
+            <div className="lg:col-span-5 order-2 lg:order-1 flex flex-col space-y-4">
+              {steps.map((step, idx) => (
+                <button 
+                  key={step.id}
+                  onClick={() => setActiveStep(idx)}
+                  className={`group text-left p-8 rounded-[32px] transition-all duration-500 border-2 ${
+                    activeStep === idx 
+                    ? 'border-amber-900 bg-amber-50 shadow-xl -translate-y-1' 
+                    : 'border-slate-100 hover:border-amber-200 bg-white'
+                  }`}
+                >
+                  <div className="flex items-start space-x-6">
+                    <div className={`p-4 rounded-2xl shrink-0 transition-all duration-500 ${activeStep === idx ? 'bg-amber-900 text-white scale-110 shadow-lg' : 'bg-slate-100 text-slate-400'}`}>
+                      {step.icon}
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className={`font-bold text-xl transition-colors ${activeStep === idx ? 'text-amber-900' : 'text-slate-700'}`}>
+                        {step.title}
+                      </h3>
+                      <p className="text-xs font-black uppercase tracking-widest text-amber-700/60">{step.subtitle}</p>
+                      {activeStep === idx && (
+                        <p className="text-slate-600 leading-relaxed pt-3 animate-in fade-in slide-in-from-top-2 duration-700">
+                          {step.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Manual Image Display */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <div className="relative aspect-square sm:aspect-video lg:aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl bg-slate-50 border-8 border-white group">
+                {steps.map((step, idx) => (
+                  <img 
+                    key={step.id}
+                    src={step.img} 
+                    alt={step.title}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                      activeStep === idx ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-105 rotate-1'
+                    }`}
+                    onError={(e) => { e.target.src = step.fallback; }}
+                  />
+                ))}
+                
+                {/* Floating Badge */}
+                <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-xl border border-white/20">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-amber-900 opacity-60">Configuration</p>
+                  <p className="text-lg font-serif font-bold text-slate-800">{steps[activeStep].title}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section id="concept" className="py-24 bg-slate-950 text-white px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <h2 className="text-5xl font-serif">La fin des notices interminables.</h2>
+              <div className="space-y-8">
+                {[
+                  { icon: <Wrench />, t: "Montage Intuitif", d: "Système de clips structurels en bois. Pas de tournevis, pas de stress." },
+                  { icon: <ShieldCheck />, t: "Sécurité Certifiée", d: "Arrondis partout. Aucune vis qui dépasse, aucune pièce métallique." },
+                  { icon: <Trees />, t: "Origine Durable", d: "Bouleau de forêts gérées. Finition à l'huile de lin comestible." }
+                ].map((f, i) => (
+                  <div key={i} className="flex space-x-6 group">
+                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
+                      {f.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-1">{f.t}</h4>
+                      <p className="text-slate-400 text-sm leading-relaxed">{f.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="bg-gradient-to-br from-amber-900/40 to-transparent p-1 px-1 rounded-[60px]">
+                <div className="bg-slate-900 rounded-[59px] p-12 aspect-square flex flex-col items-center justify-center border border-white/5">
+                   <div className="w-32 h-32 bg-amber-500/10 rounded-full blur-3xl absolute"></div>
+                   <p className="text-7xl font-serif text-amber-500 mb-4">0</p>
+                   <p className="text-xl font-bold tracking-widest uppercase opacity-40">Vis nécessaires</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Simple CTA */}
+      <section className="py-24 px-6 bg-amber-50/50">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl md:text-6xl font-serif">Offrez-lui un compagnon de route.</h2>
+            <button className="bg-amber-900 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+                Commander le pack complet
+            </button>
+            <p className="text-slate-400 text-sm">Livraison estimée sous 15 jours • Fabriqué avec soin</p>
+        </div>
+      </section>
+
+      <footer className="py-12 border-t border-slate-200 text-center text-slate-400 text-xs">
+        <p className="font-serif font-bold text-amber-900 text-lg mb-2 italic">L'ÉVOLUTIF</p>
+        <p>© 2024 - Conçu pour les parents pragmatiques et les enfants rêveurs.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
