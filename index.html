@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'Évolutif - Le mobilier qui grandit avec eux</title>
-    <!-- Bibliothèques externes pour faire fonctionner le design sans compilation -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -14,9 +13,8 @@
         .step-transition { transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
-<body class="bg-[#FDFCF9] text-slate-800 antialiased">
+<body class="bg-[#FDFCF9] text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900">
 
-    <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 bg-transparent">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="text-2xl font-serif font-bold tracking-tight text-amber-900 italic">
@@ -32,14 +30,13 @@
         </div>
     </nav>
 
-    <!-- Section d'Accueil (Hero) -->
-    <section class="relative pt-32 pb-20 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section class="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
             <div class="space-y-8">
                 <div class="inline-flex items-center px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-bold uppercase tracking-widest">
                     ✨ Zéro vis • Une vie entière
                 </div>
-                <h1 class="text-5xl md:text-7xl font-serif leading-tight text-slate-900">
+                <h1 class="text-5xl md:text-7xl font-serif leading-tight text-slate-900 text-balance">
                     Un seul meuble.<br>
                     <span class="italic text-amber-800 underline decoration-amber-200 underline-offset-8">Dix ans</span> d'histoires.
                 </h1>
@@ -54,34 +51,35 @@
                 </div>
             </div>
             
-            <div class="relative">
-                <div class="absolute -inset-4 bg-amber-100/40 rounded-[50px] -rotate-2"></div>
-                <div class="relative aspect-[4/3] rounded-[40px] overflow-hidden shadow-2xl border-[12px] border-white">
-                    <!-- Image d'illustration aquarelle -->
-                    <img src="./7407e3bd-5dc2-4fa8-819b-8857b2227783.jfif" 
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-amber-100/40 rounded-[50px] -rotate-1 group-hover:rotate-0 transition-transform duration-700"></div>
+                <div class="relative aspect-[16/9] md:aspect-[4/3] rounded-[40px] overflow-hidden shadow-2xl border-[12px] border-white bg-white">
+                    <img src="./image_6.png" 
                          onerror="this.src='https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800'"
-                         alt="Vision artistique" class="w-full h-full object-cover">
+                         alt="Vision artistique de l'évolution du meuble EvoKit" 
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 hidden sm:block">
+                  <p className="text-xs font-bold text-amber-900 uppercase tracking-widest">Le Concept</p>
+                  <p className="font-serif italic text-sm text-slate-600 mt-1">"Une vie entière d'histoires, dès la naissance."</p>
                 </div>
             </div>
         </div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-100/30 blur-[120px] rounded-full -mr-48 -mt-48"></div>
     </section>
 
-    <!-- Section Évolution Interactive -->
     <section id="evolution" class="py-24 bg-white px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20 space-y-4">
-                <h2 class="text-4xl md:text-6xl font-serif text-slate-900">Racontez son évolution.</h2>
+                <h2 class="text-4xl md:text-6xl font-serif text-slate-900 text-balance">Racontez son évolution.</h2>
                 <p class="text-xl text-slate-500 italic max-w-2xl mx-auto">Chaque étape répond aux besoins changeants de votre enfant.</p>
             </div>
 
             <div class="grid lg:grid-cols-12 gap-16 items-center">
-                <!-- Navigation des étapes -->
                 <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col space-y-4" id="steps-nav">
-                    <!-- Les boutons seront générés par le script en bas -->
-                </div>
+                    </div>
 
-                <!-- Prévisualisation de l'image -->
-                <div class="lg:col-span-7 order-1 lg:order-2 h-[500px] sm:h-[600px] relative rounded-[60px] overflow-hidden shadow-2xl bg-slate-50 border-8 border-white">
+                <div class="lg:col-span-7 order-1 lg:order-2 h-[500px] sm:h-[600px] relative rounded-[60px] overflow-hidden shadow-2xl bg-slate-50 border-8 border-white sticky top-32">
                     <img id="main-image" src="./berceau.jpg" 
                          onerror="this.src='https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800'"
                          class="absolute inset-0 w-full h-full object-cover step-transition scale-100" 
@@ -96,38 +94,68 @@
         </div>
     </section>
 
-    <!-- Caractéristiques techniques -->
-    <section id="concept" class="py-24 bg-slate-950 text-white px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+    <section id="concept" class="py-24 bg-slate-950 text-white px-6 overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[120px] rounded-full -mr-48 -mt-48 z-0"></div>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center relative z-10">
             <div class="space-y-10">
                 <h2 class="text-5xl font-serif">La fin des notices interminables.</h2>
+                <p class="text-slate-400 text-xl leading-relaxed">
+                    Fini les notices de 40 pages et les vis perdues. Notre système d'emboîtement structurel s'inspire de l'ébénisterie traditionnelle pour une solidité à toute épreuve.
+                </p>
+                
                 <div class="space-y-8">
-                    <div class="flex space-x-6">
-                        <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500"><i data-lucide="wrench"></i></div>
+                    <div class="flex space-x-6 group">
+                        <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"><i data-lucide="wrench"></i></div>
                         <div>
                             <h4 class="text-xl font-bold mb-1">Montage Intuitif</h4>
                             <p class="text-slate-400 text-sm">Système de clips structurels en bois. Pas de tournevis, pas de stress.</p>
                         </div>
                     </div>
-                    <div class="flex space-x-6">
-                        <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500"><i data-lucide="shield-check"></i></div>
+                    <div class="flex space-x-6 group">
+                        <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"><i data-lucide="shield-check"></i></div>
                         <div>
                             <h4 class="text-xl font-bold mb-1">Sécurité Certifiée</h4>
                             <p class="text-slate-400 text-sm">Arrondis partout. Aucune vis qui dépasse, aucune pièce métallique saillante.</p>
                         </div>
                     </div>
+                    <div class="flex space-x-6 group">
+                        <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"><i data-lucide="trees"></i></div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1">Made in France</h4>
+                            <p class="text-slate-400 text-sm">Bois certifié FSC, huiles végétales. Conçu pour un environnement sain.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="bg-slate-900 rounded-[60px] p-12 aspect-square flex flex-col items-center justify-center border border-white/5 text-center">
-                <p class="text-7xl font-serif text-amber-500 mb-4">0</p>
-                <p class="text-xl font-bold tracking-widest uppercase opacity-40">Vis nécessaires</p>
+            <div class="bg-slate-900 rounded-[60px] p-12 aspect-square flex flex-col items-center justify-center border border-white/5 text-center relative">
+                <div class="w-32 h-32 bg-amber-500/10 rounded-full blur-3xl absolute z-0"></div>
+                <div class="relative z-10 space-y-2">
+                    <p class="text-[120px] font-serif font-bold text-amber-500 leading-none">0</p>
+                    <p class="text-2xl font-bold tracking-widest uppercase opacity-60">Vis nécessaires</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-slate-200 text-center text-slate-400 text-xs">
-        <p class="font-serif font-bold text-amber-900 text-lg mb-2 italic">L'ÉVOLUTIF</p>
-        <p>© 2024 - Conçu pour les parents qui voient loin.</p>
+    <section class="py-24 px-6 bg-amber-50/50">
+        <div class="max-w-4xl mx-auto text-center space-y-10">
+            <h2 class="text-4xl md:text-6xl font-serif leading-tight">Offrez-lui un compagnon de route durable.</h2>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <button class="bg-amber-900 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 shadow-xl">
+                    Commander le pack complet
+                </button>
+                <button class="border-2 border-amber-900/30 text-amber-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-amber-900/5 transition-all">
+                    Parler à un expert
+                </button>
+            </div>
+            <p class="text-slate-400 text-sm max-w-sm mx-auto">Livraison estimée sous 15 jours • Fabriqué avec soin • Garantie 10 ans</p>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-100 text-center text-slate-400 text-xs bg-white">
+        <p class="font-serif font-bold text-amber-900 text-xl mb-3 italic">L'ÉVOLUTIF</p>
+        <p>© 2024 - Conçu pour les parents pragmatiques et les enfants rêveurs.</p>
+        <p class="mt-1">Concept EvoKit de Mattafred.</p>
     </footer>
 
     <script>
@@ -146,11 +174,11 @@
             }
         });
 
-        // Données des étapes d'évolution
+        // Données des étapes d'évolution (Photos réelles)
         const steps = [
             { title: "La Naissance", sub: "Le Berceau (0-6 mois)", desc: "Un cocon de douceur et de sécurité pour les premières nuits.", img: "./berceau.jpg", icon: "baby" },
             { title: "L'Autonomie", sub: "Le Lit Bébé (6 mois - 4 ans)", desc: "Il devient un lit ouvert qui favorise l'apprentissage de la liberté.", img: "./lit.jpg", icon: "bed" },
-            { title: "La Créativité", sub: "La Table d'Étude (5 ans +)", desc: "Transformation finale en bureau robuste et élégant pour ses premiers projets.", img: "./bureau.jpg", icon: "pen-tool" }
+            { title: "La Créativité", sub: "La Table d'Étude (5 ans +)", desc: "Transformation finale en bureau robuste et élégant.", img: "./bureau.jpg", icon: "pen-tool" }
         ];
 
         const navContainer = document.getElementById('steps-nav');
@@ -172,12 +200,17 @@
 
             // Mise à jour de l'apparence des boutons
             document.querySelectorAll('.step-btn').forEach((btn, i) => {
+                const iconBg = btn.querySelector('.icon-bg');
                 if (i === index) {
                     btn.classList.add('border-amber-900', 'bg-amber-50', 'shadow-xl', '-translate-y-1');
                     btn.classList.remove('border-slate-100', 'bg-white');
+                    iconBg.classList.add('bg-amber-900', 'text-white');
+                    iconBg.classList.remove('bg-slate-100', 'text-slate-400');
                 } else {
                     btn.classList.remove('border-amber-900', 'bg-amber-50', 'shadow-xl', '-translate-y-1');
                     btn.classList.add('border-slate-100', 'bg-white');
+                    iconBg.classList.remove('bg-amber-900', 'text-white');
+                    iconBg.classList.add('bg-slate-100', 'text-slate-400');
                 }
             });
         }
@@ -188,13 +221,13 @@
             btn.className = `step-btn text-left p-8 rounded-[32px] transition-all duration-500 border-2 ${i === 0 ? 'border-amber-900 bg-amber-50 shadow-xl' : 'border-slate-100 bg-white'}`;
             btn.innerHTML = `
                 <div class="flex items-start space-x-6">
-                    <div class="p-4 rounded-2xl bg-slate-100 text-slate-400 transition-all">
+                    <div class="icon-bg p-4 rounded-2xl transition-all ${i === 0 ? 'bg-amber-900 text-white' : 'bg-slate-100 text-slate-400'}">
                         <i data-lucide="${step.icon}" class="w-6 h-6"></i>
                     </div>
                     <div>
                         <h3 class="font-bold text-xl text-slate-700">${step.title}</h3>
                         <p class="text-xs font-black uppercase tracking-widest text-amber-700/60">${step.sub}</p>
-                        <p class="text-slate-600 text-sm mt-2">${step.desc}</p>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">${step.desc}</p>
                     </div>
                 </div>
             `;
