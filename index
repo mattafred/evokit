@@ -18,8 +18,12 @@ const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Configuration des images
-  const illustrationHero = "7407e3bd-5dc2-4fa8-819b-8857b2227783.jfif"; // On garde l'aquarelle pour le Hero
+  // Configuration des images - Utilisation des liens bruts GitHub pour la fiabilité
+  const githubBase = "https://raw.githubusercontent.com/mattafred/evokit/main/";
+  
+  // Note: Ton fichier .jfif n'apparaît pas sur ta capture GitHub. 
+  // Je garde ce lien local mais sache qu'il ne s'affichera pas sur ton site hébergé si tu ne l'ajoutes pas au dépôt.
+  const illustrationHero = "7407e3bd-5dc2-4fa8-819b-8857b2227783.jfif"; 
 
   useEffect(() => {
     setMounted(true);
@@ -35,7 +39,7 @@ const App = () => {
       subtitle: "Le Berceau (0-6 mois)",
       description: "Un cocon de douceur et de sécurité pour les premières nuits. Conçu en bois naturel pour un environnement sain, sans aucune émanation de colle ou de métal.",
       icon: <Baby className="w-6 h-6" />,
-      img: "berceau.jpg",
+      img: `${githubBase}berceau.jpg`,
       fallback: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800"
     },
     {
@@ -44,7 +48,7 @@ const App = () => {
       subtitle: "Le Lit Bébé (6 mois - 4 ans)",
       description: "Le meuble s'adapte à sa curiosité. En retirant quelques panneaux (sans outils), il devient un lit ouvert qui favorise l'apprentissage de la liberté et l'autonomie Montessori.",
       icon: <Bed className="w-6 h-6" />,
-      img: "lit.jpg",
+      img: `${githubBase}lit.jpg`,
       fallback: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800"
     },
     {
@@ -53,7 +57,7 @@ const App = () => {
       subtitle: "La Table d'Étude (5 ans +)",
       description: "La transformation finale. Le lit devient un bureau robuste et élégant. Il accompagne désormais ses premiers dessins, ses devoirs et ses projets de futur écolier.",
       icon: <PenTool className="w-6 h-6" />,
-      img: "bureau.jpg",
+      img: `${githubBase}bureau.jpg`,
       fallback: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&q=80&w=800"
     }
   ];
