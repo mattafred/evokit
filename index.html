@@ -15,6 +15,7 @@
 </head>
 <body class="bg-[#FDFCF9] text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900">
 
+    <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 bg-transparent">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="text-2xl font-serif font-bold tracking-tight text-amber-900 italic">
@@ -30,13 +31,15 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-            <div class="space-y-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Texte : 5 colonnes -->
+            <div class="md:col-span-5 space-y-8">
                 <div class="inline-flex items-center px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-bold uppercase tracking-widest">
                     ✨ Zéro vis • Une vie entière
                 </div>
-                <h1 class="text-5xl md:text-7xl font-serif leading-tight text-slate-900 text-balance">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif leading-tight text-slate-900 text-balance">
                     Un seul meuble.<br>
                     <span class="italic text-amber-800 underline decoration-amber-200 underline-offset-8">Dix ans</span> d'histoires.
                 </h1>
@@ -51,35 +54,38 @@
                 </div>
             </div>
             
-            <div class="relative group">
+            <!-- Visuel : 7 colonnes pour laisser la place au 16/9 -->
+            <div class="md:col-span-7 relative group">
                 <div class="absolute -inset-4 bg-amber-100/40 rounded-[50px] -rotate-1 group-hover:rotate-0 transition-transform duration-700"></div>
-                <div class="relative aspect-[16/9] md:aspect-[4/3] rounded-[40px] overflow-hidden shadow-2xl border-[12px] border-white bg-white">
+                <!-- MISE À JOUR : Ratio 16/9 strict (aspect-video) sur tous les écrans -->
+                <div class="relative aspect-video rounded-[40px] overflow-hidden shadow-2xl border-[8px] md:border-[12px] border-white bg-white">
                     <img src="./image_6.png" 
-                         onerror="this.src='https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800'"
+                         onerror="this.src='https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=1200'"
                          alt="Vision artistique de l'évolution du meuble EvoKit" 
                          class="w-full h-full object-cover">
                 </div>
-                <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 hidden sm:block">
-                  <p className="text-xs font-bold text-amber-900 uppercase tracking-widest">Le Concept</p>
-                  <p className="font-serif italic text-sm text-slate-600 mt-1">"Une vie entière d'histoires, dès la naissance."</p>
+                
+                <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 hidden lg:block max-w-xs">
+                  <p class="text-[10px] font-bold text-amber-900 uppercase tracking-widest">Philosophie</p>
+                  <p class="font-serif italic text-sm text-slate-600 mt-1">"Une vie entière d'histoires, dès la naissance."</p>
                 </div>
             </div>
         </div>
         <div class="absolute top-0 right-0 w-96 h-96 bg-amber-100/30 blur-[120px] rounded-full -mr-48 -mt-48"></div>
     </section>
 
+    <!-- Evolution Section -->
     <section id="evolution" class="py-24 bg-white px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20 space-y-4">
-                <h2 class="text-4xl md:text-6xl font-serif text-slate-900 text-balance">Racontez son évolution.</h2>
+                <h2 class="text-4xl md:text-6xl font-serif text-slate-900">Racontez son évolution.</h2>
                 <p class="text-xl text-slate-500 italic max-w-2xl mx-auto">Chaque étape répond aux besoins changeants de votre enfant.</p>
             </div>
 
             <div class="grid lg:grid-cols-12 gap-16 items-center">
-                <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col space-y-4" id="steps-nav">
-                    </div>
+                <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col space-y-4" id="steps-nav"></div>
 
-                <div class="lg:col-span-7 order-1 lg:order-2 h-[500px] sm:h-[600px] relative rounded-[60px] overflow-hidden shadow-2xl bg-slate-50 border-8 border-white sticky top-32">
+                <div class="lg:col-span-7 order-1 lg:order-2 h-[450px] md:h-[600px] relative rounded-[60px] overflow-hidden shadow-2xl bg-slate-50 border-8 border-white sticky top-32">
                     <img id="main-image" src="./berceau.jpg" 
                          onerror="this.src='https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800'"
                          class="absolute inset-0 w-full h-full object-cover step-transition scale-100" 
@@ -94,41 +100,27 @@
         </div>
     </section>
 
+    <!-- Concept Section -->
     <section id="concept" class="py-24 bg-slate-950 text-white px-6 overflow-hidden relative">
         <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 blur-[120px] rounded-full -mr-48 -mt-48 z-0"></div>
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center relative z-10">
             <div class="space-y-10">
                 <h2 class="text-5xl font-serif">La fin des notices interminables.</h2>
                 <p class="text-slate-400 text-xl leading-relaxed">
-                    Fini les notices de 40 pages et les vis perdues. Notre système d'emboîtement structurel s'inspire de l'ébénisterie traditionnelle pour une solidité à toute épreuve.
+                    Fini les notices de 40 pages et les vis perdues. Notre système d'emboîtement structurel s'inspire de l'ébénisterie traditionnelle.
                 </p>
-                
                 <div class="space-y-8">
                     <div class="flex space-x-6 group">
                         <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"><i data-lucide="wrench"></i></div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-1">Montage Intuitif</h4>
-                            <p class="text-slate-400 text-sm">Système de clips structurels en bois. Pas de tournevis, pas de stress.</p>
-                        </div>
+                        <div><h4 class="text-xl font-bold mb-1">Montage Intuitif</h4><p class="text-slate-400 text-sm">Système de clips structurels en bois.</p></div>
                     </div>
                     <div class="flex space-x-6 group">
                         <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"><i data-lucide="shield-check"></i></div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-1">Sécurité Certifiée</h4>
-                            <p class="text-slate-400 text-sm">Arrondis partout. Aucune vis qui dépasse, aucune pièce métallique saillante.</p>
-                        </div>
-                    </div>
-                    <div class="flex space-x-6 group">
-                        <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"><i data-lucide="trees"></i></div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-1">Made in France</h4>
-                            <p class="text-slate-400 text-sm">Bois certifié FSC, huiles végétales. Conçu pour un environnement sain.</p>
-                        </div>
+                        <div><h4 class="text-xl font-bold mb-1">Sécurité Certifiée</h4><p class="text-slate-400 text-sm">Aucune vis qui dépasse.</p></div>
                     </div>
                 </div>
             </div>
             <div class="bg-slate-900 rounded-[60px] p-12 aspect-square flex flex-col items-center justify-center border border-white/5 text-center relative">
-                <div class="w-32 h-32 bg-amber-500/10 rounded-full blur-3xl absolute z-0"></div>
                 <div class="relative z-10 space-y-2">
                     <p class="text-[120px] font-serif font-bold text-amber-500 leading-none">0</p>
                     <p class="text-2xl font-bold tracking-widest uppercase opacity-60">Vis nécessaires</p>
@@ -137,32 +129,14 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-amber-50/50">
-        <div class="max-w-4xl mx-auto text-center space-y-10">
-            <h2 class="text-4xl md:text-6xl font-serif leading-tight">Offrez-lui un compagnon de route durable.</h2>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <button class="bg-amber-900 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl hover:-translate-y-1 transition-all active:scale-95 shadow-xl">
-                    Commander le pack complet
-                </button>
-                <button class="border-2 border-amber-900/30 text-amber-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-amber-900/5 transition-all">
-                    Parler à un expert
-                </button>
-            </div>
-            <p class="text-slate-400 text-sm max-w-sm mx-auto">Livraison estimée sous 15 jours • Fabriqué avec soin • Garantie 10 ans</p>
-        </div>
-    </section>
-
     <footer class="py-12 border-t border-slate-100 text-center text-slate-400 text-xs bg-white">
         <p class="font-serif font-bold text-amber-900 text-xl mb-3 italic">L'ÉVOLUTIF</p>
-        <p>© 2024 - Conçu pour les parents pragmatiques et les enfants rêveurs.</p>
-        <p class="mt-1">Concept EvoKit de Mattafred.</p>
+        <p>© 2024 - Conçu pour les parents qui voient loin.</p>
     </footer>
 
     <script>
-        // Initialisation des icônes Lucide
         lucide.createIcons();
 
-        // Gestion de l'apparence de la barre de navigation au scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -174,7 +148,6 @@
             }
         });
 
-        // Données des étapes d'évolution (Photos réelles)
         const steps = [
             { title: "La Naissance", sub: "Le Berceau (0-6 mois)", desc: "Un cocon de douceur et de sécurité pour les premières nuits.", img: "./berceau.jpg", icon: "baby" },
             { title: "L'Autonomie", sub: "Le Lit Bébé (6 mois - 4 ans)", desc: "Il devient un lit ouvert qui favorise l'apprentissage de la liberté.", img: "./lit.jpg", icon: "bed" },
@@ -185,12 +158,9 @@
         const mainImg = document.getElementById('main-image');
         const badgeText = document.getElementById('badge-text');
 
-        // Fonction pour changer d'étape
         function updateStep(index) {
-            // Effet visuel sur l'image
             mainImg.style.opacity = '0';
             mainImg.style.transform = 'scale(1.02)';
-            
             setTimeout(() => {
                 mainImg.src = steps[index].img;
                 badgeText.innerText = steps[index].title;
@@ -198,7 +168,6 @@
                 mainImg.style.transform = 'scale(1)';
             }, 300);
 
-            // Mise à jour de l'apparence des boutons
             document.querySelectorAll('.step-btn').forEach((btn, i) => {
                 const iconBg = btn.querySelector('.icon-bg');
                 if (i === index) {
@@ -215,7 +184,6 @@
             });
         }
 
-        // Création dynamique des boutons de navigation
         steps.forEach((step, i) => {
             const btn = document.createElement('button');
             btn.className = `step-btn text-left p-8 rounded-[32px] transition-all duration-500 border-2 ${i === 0 ? 'border-amber-900 bg-amber-50 shadow-xl' : 'border-slate-100 bg-white'}`;
@@ -235,7 +203,6 @@
             navContainer.appendChild(btn);
         });
 
-        // Relancer la création des icônes pour les éléments dynamiques
         lucide.createIcons();
     </script>
 </body>
